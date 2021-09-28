@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router';
 import TodoFeature from './features/Todo';
 import AlbumsFeature from './features/Album';
 import { Link, NavLink } from 'react-router-dom';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Redirect from='/post-list/:postId' to='/posts/:postId' exact />
         <Route path='/todos' component={TodoFeature} />
         <Route path='/albums' component={AlbumsFeature} />
+
+        <Route component={NotFound} />
       </Switch>
       Footer
     </div>
