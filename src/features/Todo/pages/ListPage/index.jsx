@@ -83,9 +83,7 @@ function ListPage(props) {
   };
 
   const renderTodoList = useMemo(() => {
-    return todoList.filter(
-      (todo) => filteredStatus === 'all' || filteredStatus === todo.status
-    );
+    return todoList.filter((todo) => filteredStatus === 'all' || filteredStatus === todo.status);
   }, [todoList, filteredStatus]);
 
   // console.log(renderTodoList);
