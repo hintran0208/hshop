@@ -1,5 +1,4 @@
 import axiosClient from './axiosClient';
-
 const productApi = {
   getAll(params) {
     const url = '/products';
@@ -21,7 +20,7 @@ const productApi = {
     return axiosClient.patch(url, data);
   },
 
-  remove(id) {
+  delete(id) {
     const url = `/products/${id}`;
     return axiosClient.delete(url);
   },
