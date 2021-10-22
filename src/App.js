@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import TodoFeature from './features/Todo';
-import AlbumsFeature from './features/Album';
-import { Link, NavLink } from 'react-router-dom';
-import NotFound from './components/NotFound';
+import { NavLink } from 'react-router-dom';
 import productApi from './api/productApi';
+import NotFound from './components/NotFound';
+import AlbumsFeature from './features/Album';
+import CounterFeature from './features/Counter';
+import TodoFeature from './features/Todo';
 
 function App() {
   useEffect(() => {
@@ -32,12 +33,13 @@ function App() {
       <Switch>
         <Redirect from="/home" to="/" exact />
         <Redirect from="/post-list/:postId" to="/posts/:postId" exact />
+
+        <Route path="/" component={CounterFeature} />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumsFeature} />
 
         <Route component={NotFound} />
       </Switch>
-      Footer
     </div>
   );
 }
