@@ -28,6 +28,8 @@ function InputField(props) {
           name={name}
           value={value}
           disabled={disabled}
+          margin="normal"
+          variant="outlined"
         />
       )}
     ></Controller>

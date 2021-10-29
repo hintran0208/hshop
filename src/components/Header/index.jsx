@@ -5,9 +5,15 @@ import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
-import { createTheme, ThemeProvider } from '@mui/system';
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Register from 'features/Auth/Components/Register';
 
 const useStyles = makeStyles({
   link: {
@@ -18,6 +24,16 @@ const useStyles = makeStyles({
 
 export default function Header() {
   const classes = useStyles();
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -39,9 +55,29 @@ export default function Header() {
             <Button color="inherit">Albums</Button>
           </NavLink>
 
-          <Button color="inherit">Register</Button>
+          <Button color="inherit" onClick={handleClickOpen}>
+            Register
+          </Button>
         </Toolbar>
       </AppBar>
+
+      <Dialog
+        disableEscapeKeyDown
+        open={open}
+        onClose={(event, reason) => {
+          if (reason !== 'backdropClick') {
+            handleClose(event, reason);
+          }
+        }}
+      >
+        <DialogContent>
+          <Register />
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }
