@@ -2,18 +2,15 @@ import CodeIcon from '@mui/icons-material/Code';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { makeStyles } from '@mui/styles';
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { makeStyles } from '@mui/styles';
 import Register from 'features/Auth/Components/Register';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles({
   link: {
