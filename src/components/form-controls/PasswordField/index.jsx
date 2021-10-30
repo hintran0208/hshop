@@ -34,30 +34,11 @@ function PasswordField(props) {
 
   return (
     <div>
-      {/* <Controller
-      name={name}
-      control={form.control}
-      render={({ field: { onChange, onBlur, value, name }, fieldState: { invalid, error } }) => (
-        <TextField
-          fullWidth
-          label={label}
-          error={invalid}
-          helperText={error?.message}
-          onChange={onChange}
-          onBlur={onBlur}
-          name={name}
-          value={value}
-          disabled={disabled}
-          margin="normal"
-          variant="outlined"
-        />
-      )}
-    ></Controller> */}
       <Controller
         name={name}
         control={control}
         render={({ field: { onChange, onBlur, value, name }, fieldState: { invalid, error } }) => (
-          <FormControl fullWidth margin="normal" variant="outlined">
+          <FormControl error={invalid} fullWidth margin="normal" variant="outlined">
             <InputLabel htmlFor={name}>{label}</InputLabel>
             <OutlinedInput
               id={name}
@@ -78,6 +59,8 @@ function PasswordField(props) {
                 </InputAdornment>
               }
             />
+
+            <FormHelperText>{error?.message}</FormHelperText>
           </FormControl>
         )}
       ></Controller>
