@@ -1,4 +1,3 @@
-// import InputField from '../../../../components/form-controls/InputField';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Avatar, Button, Typography } from '@mui/material';
@@ -32,7 +31,7 @@ function RegisterForm(props) {
     password: yup
       .string()
       .required('Please enter your password.')
-      .min(6, 'Please enter at least 6 characters'),
+      .min(6, 'Please enter at least six characters.'),
     retypePassword: yup
       .string()
       .required('Please retype your password.')
@@ -69,10 +68,10 @@ function RegisterForm(props) {
         </Typography>
 
         <form onSubmit={form.handleSubmit(handleSubmit)}>
-          <InputField name="fullName" label="Full Name" form={form} />
-          <InputField name="email" label="Email" form={form} />
-          <PasswordField name="password" label="Password" form={form} />
-          <PasswordField name="retypePassword" label="Retype Password" form={form} />
+          <InputField name="fullName" label="Full Name" form={form}></InputField>
+          <InputField name="email" label="Email" form={form}></InputField>
+          <PasswordField name="password" label="Password" form={form}></PasswordField>
+          <PasswordField name="retypePassword" label="Retype Password" form={form}></PasswordField>
 
           <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 1 }}>
             Create An Account
