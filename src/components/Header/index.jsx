@@ -68,7 +68,7 @@ export default function Header() {
         }}
       >
         <DialogContent>
-          <Register />
+          <Register closeDialog={handleClose} />
         </DialogContent>
 
         <DialogActions>
