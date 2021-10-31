@@ -15,8 +15,7 @@ function Register(props) {
       values.username = values.email;
 
       const action = register(values);
-      const resultAction = await dispatch(action);
-      const user = unwrapResult(resultAction);
+      const user = await dispatch(action).unwrap();
 
       console.log('new user:', user);
     } catch (error) {

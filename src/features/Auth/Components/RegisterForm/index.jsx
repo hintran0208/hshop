@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const theme = createTheme();
 
@@ -54,11 +55,19 @@ function RegisterForm(props) {
     if (onSubmit) {
       await onSubmit(values);
     }
+
+    form.reset();
   };
+
+  const { isSubmitting } = form.formState;
 
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ paddingTop: 2 }}>
+        {isSubmitting && (
+          <LinearProgress sx={{ position: 'absolute', top: '0', right: '0', left: '0' }} />
+        )}
+
         <Avatar sx={{ mx: 'auto', bgcolor: 'primary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
@@ -73,7 +82,14 @@ function RegisterForm(props) {
           <PasswordField name="password" label="Password" form={form}></PasswordField>
           <PasswordField name="retypePassword" label="Retype Password" form={form}></PasswordField>
 
-          <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 1 }}>
+          <Button
+            disabled={isSubmitting}
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ mt: 1 }}
+          >
             Create An Account
           </Button>
         </form>
