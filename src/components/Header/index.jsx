@@ -1,4 +1,6 @@
+import { Close } from '@mui/icons-material';
 import CodeIcon from '@mui/icons-material/Code';
+import IconButton from '@mui/material/IconButton';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,13 +13,14 @@ import { makeStyles } from '@mui/styles';
 import Register from 'features/Auth/Components/Register';
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   link: {
     color: '#fff',
     textDecoration: 'none',
   },
-});
+}));
 
 export default function Header() {
   const classes = useStyles();
@@ -67,13 +70,13 @@ export default function Header() {
           }
         }}
       >
+        <IconButton sx={{ position: 'absolute', top: '0', right: '0' }} onClick={handleClose}>
+          <Close />
+        </IconButton>
+
         <DialogContent>
           <Register closeDialog={handleClose} />
         </DialogContent>
-
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
       </Dialog>
     </Box>
   );
