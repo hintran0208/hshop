@@ -1,21 +1,20 @@
 import { Close } from '@mui/icons-material';
 import CodeIcon from '@mui/icons-material/Code';
-import IconButton from '@mui/material/IconButton';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
+import Login from 'features/Auth/Components/Login';
 import Register from 'features/Auth/Components/Register';
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
-import Login from 'features/Auth/Components/Login';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const useStyles = makeStyles((theme) => ({
   link: {
     color: '#fff',
@@ -33,6 +32,9 @@ export default function Header() {
 
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
+
+  const loggedInUser = useSelector((state) => state.user.current);
+  const isLoggedIn = !!loggedInUser.id;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -62,9 +64,17 @@ export default function Header() {
             <Button color="inherit">Albums</Button>
           </NavLink>
 
-          <Button color="inherit" onClick={handleClickOpen}>
-            Login
-          </Button>
+          {!isLoggedIn && (
+            <Button color="inherit" onClick={handleClickOpen}>
+              Login
+            </Button>
+          )}
+
+          {isLoggedIn && (
+            <IconButton color="inherit">
+              <AccountCircleIcon />
+            </IconButton>
+          )}
         </Toolbar>
       </AppBar>
 
