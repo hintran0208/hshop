@@ -69,7 +69,7 @@ function LoginForm(props) {
             variant="contained"
             color="primary"
             fullWidth
-            sx={{ mt: 1 }}
+            sx={{ mt: 1, mb: 2 }}
             size="large"
           >
             Sign In
