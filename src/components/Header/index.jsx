@@ -14,6 +14,7 @@ import Register from 'features/Auth/Components/Register';
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
+import Login from 'features/Auth/Components/Login';
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -75,7 +76,8 @@ export default function Header() {
         </IconButton>
 
         <DialogContent>
-          <Register closeDialog={handleClose} />
+          {/* <Register closeDialog={handleClose} /> */}
+          <Login closeDialog={handleClose} />
         </DialogContent>
       </Dialog>
     </Box>
