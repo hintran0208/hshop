@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import Header from 'components/Header';
+import ProductFeature from 'features/Product';
 import { useSnackbar } from 'notistack';
 import React, { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" component={CounterFeature} exact />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumsFeature} />
+        <Route path="/products" component={ProductFeature} />
 
         <Route component={NotFound} />
       </Switch>
