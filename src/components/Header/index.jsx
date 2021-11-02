@@ -16,6 +16,8 @@ import { useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Menu, MenuItem } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { logout } from 'features/Auth/userSlice';
 const useStyles = makeStyles((theme) => ({
   link: {
     color: '#fff',
@@ -30,6 +32,7 @@ const MODE = {
 
 export default function Header() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
@@ -49,8 +52,14 @@ export default function Header() {
   const handleUserClick = (e) => {
     setAnchorEl(e.currentTarget);
   };
+
   const handleCloseMenu = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogoutClick = () => {
+    const action = logout();
+    dispatch(action);
   };
 
   return (
@@ -97,7 +106,7 @@ export default function Header() {
         }}
       >
         <MenuItem onClick={handleCloseMenu}>My account</MenuItem>
-        <MenuItem onClick={handleCloseMenu}>Logout</MenuItem>
+        <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
       </Menu>
 
       <Dialog
