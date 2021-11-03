@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/system';
 import { Container, Grid, Paper } from '@mui/material';
+import productApi from 'api/productApi';
 
 ListPage.propTypes = {};
 
 function ListPage(props) {
+  useEffect(() => {
+    (async () => {
+      const response = await productApi.getAll({ _page: 1, _limit: 10 });
+      console.log(response);
+    })();
+  }, []);
+
   return (
     <Box>
       <Container>
