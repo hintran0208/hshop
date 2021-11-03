@@ -1,16 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box } from '@mui/system';
-import { Container, Grid, Paper } from '@mui/material';
+import { Container, Grid, Paper, Typography } from '@mui/material';
 import productApi from 'api/productApi';
+import ProductSkeletonList from '../components/ProductSkeletonList';
 
 ListPage.propTypes = {};
 
 function ListPage(props) {
+  const [productList, setProductList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     (async () => {
-      const response = await productApi.getAll({ _page: 1, _limit: 10 });
-      console.log(response);
+      try {
+        const { data } = await productApi.getAll({ _page: 1, _limit: 10 });
+        setProductList(data);
+      } catch (error) {
+        console.log('Failed to fetch product list: ', error);
+      }
+
+      setLoading(false);
     })();
   }, []);
 
@@ -23,7 +33,9 @@ function ListPage(props) {
           </Grid>
 
           <Grid item sx={{ flex: '1 1 auto' }}>
-            <Paper elevation={0}>Right</Paper>
+            <Paper elevation={0}>
+              {loading ? <ProductSkeletonList /> : <Typography>Product List</Typography>}
+            </Paper>
           </Grid>
         </Grid>
       </Container>
