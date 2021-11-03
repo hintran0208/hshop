@@ -4,6 +4,7 @@ import { Box } from '@mui/system';
 import { Container, Grid, Paper, Typography } from '@mui/material';
 import productApi from 'api/productApi';
 import ProductSkeletonList from '../components/ProductSkeletonList';
+import ProductList from '../components/ProductList';
 
 ListPage.propTypes = {};
 
@@ -32,9 +33,9 @@ function ListPage(props) {
             <Paper elevation={0}>Left</Paper>
           </Grid>
 
-          <Grid item sx={{ flex: '1 1 auto' }}>
+          <Grid item sx={{ flex: '1 1 0' }}>
             <Paper elevation={0}>
-              {loading ? <ProductSkeletonList /> : <Typography>Product List</Typography>}
+              {loading ? <ProductSkeletonList /> : <ProductList data={productList} />}
             </Paper>
           </Grid>
         </Grid>
