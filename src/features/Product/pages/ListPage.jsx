@@ -5,7 +5,8 @@ import { Container, Grid, Pagination, Paper, Typography } from '@mui/material';
 import productApi from 'api/productApi';
 import ProductSkeletonList from '../components/ProductSkeletonList';
 import ProductList from '../components/ProductList';
-import ProductSort from '../components/ProuductSort';
+import ProductSort from '../components/ProductSort';
+import ProductFilters from '../components/ProductFilters';
 
 ListPage.propTypes = {};
 
@@ -51,12 +52,21 @@ function ListPage(props) {
     }));
   };
 
+  const handleFiltersChange = (newFilters) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      ...newFilters,
+    }));
+  };
+
   return (
     <Box>
       <Container>
         <Grid container spacing={1}>
           <Grid item sx={{ width: '250px' }}>
-            <Paper elevation={0}>Left</Paper>
+            <Paper elevation={0}>
+              <ProductFilters filters={filters} onChange={handleFiltersChange} />
+            </Paper>
           </Grid>
 
           <Grid item sx={{ flex: '1 1 0' }}>
