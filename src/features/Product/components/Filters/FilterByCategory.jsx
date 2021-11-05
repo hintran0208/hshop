@@ -3,12 +3,31 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 import categoryApi from 'api/categoryApi';
+import { makeStyles } from '@mui/styles';
+const useStyles = makeStyles((theme) => ({
+  menu: {
+    padding: 0,
+    margin: 0,
+    listStyleType: 'none',
+
+    '& > li': {
+      marginTop: '8px',
+      transition: 'all .25s',
+
+      '&:hover': {
+        cursor: 'pointer',
+        color: 'blue',
+      },
+    },
+  },
+}));
 
 FilterByCategory.propTypes = {
   onChange: PropTypes.func,
 };
 
 function FilterByCategory({ onChange }) {
+  const classes = useStyles();
   const [categoryList, setCategoryList] = useState([]);
 
   useEffect(() => {
@@ -34,13 +53,13 @@ function FilterByCategory({ onChange }) {
   };
 
   return (
-    <Box>
-      <Typography>DANH MỤC SẢN PHẨM</Typography>
+    <Box sx={{ p: 2 }}>
+      <Typography variant="subtitle2">DANH MỤC SẢN PHẨM</Typography>
 
-      <ul>
+      <ul className={classes.menu}>
         {categoryList.map((category) => (
           <li key={category.id} onClick={() => handleCategoryClick(category)}>
-            {category.name}
+            <Typography variant="body2">{category.name}</Typography>
           </li>
         ))}
       </ul>

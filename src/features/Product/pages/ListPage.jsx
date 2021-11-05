@@ -7,6 +7,7 @@ import ProductSkeletonList from '../components/ProductSkeletonList';
 import ProductList from '../components/ProductList';
 import ProductSort from '../components/ProductSort';
 import ProductFilters from '../components/ProductFilters';
+import LeftMenuSkeleton from '../components/LeftMenuSkeletonList';
 
 ListPage.propTypes = {};
 
@@ -65,7 +66,11 @@ function ListPage(props) {
         <Grid container spacing={1}>
           <Grid item sx={{ width: '250px' }}>
             <Paper elevation={0}>
-              <ProductFilters filters={filters} onChange={handleFiltersChange} />
+              {loading ? (
+                <LeftMenuSkeleton length={1} />
+              ) : (
+                <ProductFilters filters={filters} onChange={handleFiltersChange} />
+              )}
             </Paper>
           </Grid>
 
