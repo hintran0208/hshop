@@ -8,6 +8,7 @@ import ProductList from '../components/ProductList';
 import ProductSort from '../components/ProductSort';
 import ProductFilters from '../components/ProductFilters';
 import LeftMenuSkeleton from '../components/LeftMenuSkeletonList';
+import FilterViewer from '../components/FilterViewer';
 
 ListPage.propTypes = {};
 
@@ -60,6 +61,10 @@ function ListPage(props) {
     }));
   };
 
+  const setNewFilters = (newFilters) => {
+    setFilters(newFilters);
+  };
+
   return (
     <Box>
       <Container>
@@ -77,6 +82,7 @@ function ListPage(props) {
           <Grid item sx={{ flex: '1 1 0' }}>
             <Paper elevation={0}>
               <ProductSort currentSort={filters._sort} onChange={handleSortChange} />
+              <FilterViewer filters={filters} onChange={setNewFilters} />
 
               {loading ? <ProductSkeletonList length={9} /> : <ProductList data={productList} />}
 

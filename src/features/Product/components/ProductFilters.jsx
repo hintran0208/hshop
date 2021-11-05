@@ -11,12 +11,13 @@ ProductFilter.propTypes = {
 };
 
 function ProductFilter({ filters, onChange }) {
-  const handleCategoryChange = (newCategoryId) => {
+  const handleCategoryChange = (newCategory) => {
     if (!onChange) return;
 
     const newFilters = {
       ...filters,
-      'category.id': newCategoryId,
+      'category.id': newCategory.id,
+      'category.name': newCategory.name,
     };
 
     onChange(newFilters);
