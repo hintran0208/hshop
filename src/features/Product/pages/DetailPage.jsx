@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import React from 'react';
 import { useRouteMatch } from 'react-router';
 import useProductDetail from '../components/hooks/useProductDetail';
+import ProductDetailSkeleton from '../components/ProductDetailSkeleton';
 import ProductThumbnail from '../components/ProductThumbnail';
 
 DetailPage.propTypes = {};
@@ -15,7 +16,7 @@ function DetailPage(props) {
   const { product, loading } = useProductDetail(productId);
 
   if (loading) {
-    return <Box>Loading</Box>;
+    return <ProductDetailSkeleton />;
   }
 
   return (
