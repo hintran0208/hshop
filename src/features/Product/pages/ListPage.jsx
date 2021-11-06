@@ -20,7 +20,6 @@ function ListPage(props) {
   const queryParams = useMemo(() => {
     const params = queryString.parse(location.search);
 
-    console.log('Param:', params);
     return {
       ...params,
       _page: Number.parseInt(params._page) || 1,
