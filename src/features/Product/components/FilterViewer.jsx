@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
@@ -97,9 +97,13 @@ FilterViewer.propTypes = {
 function FilterViewer({ filters = {}, onChange = null }) {
   const classes = useStyles();
 
+  const visibleFilter = useMemo(() => {
+    return FILTER_LIST.filter((x) => x.isVisible(filters));
+  }, [filters]);
+
   return (
     <Box component="ul" className={classes.root}>
-      {FILTER_LIST.filter((x) => x.isVisible(filters)).map((x) => (
+      {visibleFilter.map((x) => (
         <li key={x.id}>
           <Chip
             label={x.getLabel(filters)}
