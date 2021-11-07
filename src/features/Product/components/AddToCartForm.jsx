@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from '@mui/material';
 import InputField from 'components/form-controls/InputField';
+import QuantityField from 'components/form-controls/QuantityField';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -12,7 +13,11 @@ AddToCartForm.propTypes = {
 
 function AddToCartForm({ onSubmit = null }) {
   const schema = yup.object({
-    quantity: yup.number().required('Please enter quantity').min(1, 'Please enter at least 1'),
+    quantity: yup
+      .number()
+      .required('Please enter quantity')
+      .min(1, 'Minimum value is 1')
+      .typeError('Please enter a number'),
   });
 
   const form = useForm({
@@ -31,17 +36,17 @@ function AddToCartForm({ onSubmit = null }) {
 
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>
-      <InputField name="quantity" label="Quantity" form={form}></InputField>
+      <QuantityField name="quantity" label="Quantity" form={form}></QuantityField>
 
       <Button
         type="submit"
         variant="contained"
         color="primary"
-        fullWidth
+        style={{ width: '250px' }}
         sx={{ mt: 1, mb: 2 }}
         size="large"
       >
-        Buy
+        Add to cart
       </Button>
     </form>
   );
