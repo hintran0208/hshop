@@ -4,6 +4,7 @@ import React from 'react';
 import { useRouteMatch } from 'react-router';
 import useProductDetail from '../components/hooks/useProductDetail';
 import ProductDetailSkeleton from '../components/ProductDetailSkeleton';
+import ProductInfo from '../components/ProductInfo';
 import ProductThumbnail from '../components/ProductThumbnail';
 
 DetailPage.propTypes = {};
@@ -28,7 +29,7 @@ function DetailPage(props) {
               <ProductThumbnail product={product} />
             </Grid>
             <Grid item sx={{ flex: '1 1 0', p: 1.2 }}>
-              Product Info
+              <ProductInfo product={product} />
             </Grid>
           </Grid>
         </Paper>
