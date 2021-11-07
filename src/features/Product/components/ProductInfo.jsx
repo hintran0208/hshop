@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { formatPrice } from 'utils';
 
 ProductInfo.propTypes = {
