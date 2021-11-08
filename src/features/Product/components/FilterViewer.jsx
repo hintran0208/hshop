@@ -1,9 +1,8 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import { Chip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
-import { FilterTwoTone } from '@mui/icons-material';
-import { Chip } from '@mui/material';
+import PropTypes from 'prop-types';
+import React, { useMemo } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {

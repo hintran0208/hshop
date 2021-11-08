@@ -1,9 +1,8 @@
-import { Button, Checkbox, FormControlLabel, Typography } from '@mui/material';
-import TextField from '@mui/material/TextField';
+import { Checkbox, FormControlLabel, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { Box } from '@mui/system';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { makeStyles } from '@mui/styles';
+import React from 'react';
 const useStyles = makeStyles((theme) => ({
   list: {
     padding: 0,
