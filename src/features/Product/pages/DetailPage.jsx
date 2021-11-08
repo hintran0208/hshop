@@ -1,4 +1,4 @@
-import { Container, Grid, Paper } from '@mui/material';
+import { Container, Grid, LinearProgress, Paper } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
@@ -23,7 +23,12 @@ function DetailPage(props) {
   const { product, loading } = useProductDetail(productId);
 
   if (loading) {
-    return <ProductDetailSkeleton />;
+    return (
+      <Box>
+        <LinearProgress sx={{ position: 'fixed', top: 0, left: 0, width: '100%' }} />
+        <ProductDetailSkeleton />
+      </Box>
+    );
   }
 
   const handleAddToCartSubmit = (formValues) => {
@@ -31,7 +36,7 @@ function DetailPage(props) {
   };
 
   return (
-    <Box>
+    <Box sx={{ pb: 3 }}>
       <Container>
         <Paper elevation={0}>
           <Grid container>
