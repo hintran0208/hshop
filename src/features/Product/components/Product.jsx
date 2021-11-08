@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import { Skeleton, Typography } from '@mui/material';
 import { STATIC_HOST, THUMBNAIL_PLACEHOLDER } from 'constants/index';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useHistory } from 'react-router';
 import { formatPrice } from 'utils';
 

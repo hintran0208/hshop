@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Route, Switch, useRouteMatch } from 'react-router';
-import ListPage from './pages/ListPage';
 import { Box } from '@mui/system';
+import React from 'react';
+import { Route, Switch, useRouteMatch } from 'react-router';
 import DetailPage from './pages/DetailPage';
+import ListPage from './pages/ListPage';
 
 ProductFeature.propTypes = {};
 

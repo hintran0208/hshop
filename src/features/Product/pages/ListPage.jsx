@@ -1,16 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
+import { Container, Grid, Pagination, Paper } from '@mui/material';
 import { Box } from '@mui/system';
-import { Container, Grid, Pagination, Paper, Typography } from '@mui/material';
 import productApi from 'api/productApi';
-import ProductSkeletonList from '../components/ProductSkeletonList';
-import ProductList from '../components/ProductList';
-import ProductSort from '../components/ProductSort';
-import ProductFilters from '../components/ProductFilters';
-import LeftMenuSkeleton from '../components/LeftMenuSkeletonList';
-import FilterViewer from '../components/FilterViewer';
-import { useHistory, useLocation } from 'react-router';
 import queryString from 'query-string';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useHistory, useLocation } from 'react-router';
+import FilterViewer from '../components/FilterViewer';
+import LeftMenuSkeleton from '../components/LeftMenuSkeletonList';
+import ProductFilters from '../components/ProductFilters';
+import ProductList from '../components/ProductList';
+import ProductSkeletonList from '../components/ProductSkeletonList';
+import ProductSort from '../components/ProductSort';
 
 ListPage.propTypes = {};
 

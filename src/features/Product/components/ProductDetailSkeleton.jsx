@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box } from '@mui/system';
 import { Container, Grid, Paper, Skeleton } from '@mui/material';
+import { Box } from '@mui/system';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 ProductDetailSkeleton.propTypes = {
   length: PropTypes.number,
@@ -12,8 +12,6 @@ ProductDetailSkeleton.defaultProps = {
 };
 
 function ProductDetailSkeleton(props) {
-  const { length } = props;
-
   return (
     <Box>
       <Container>

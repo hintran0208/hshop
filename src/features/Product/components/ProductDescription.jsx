@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Paper } from '@mui/material';
+import DOMPurify from 'dompurify';
 
 ProductDescription.propTypes = {
   product: PropTypes.object,
 };
 
 function ProductDescription({ product = {} }) {
-  return <div>{product.description}</div>;
+  const safeDescription = DOMPurify.sanitize(product.description);
+
+  return (
+    <Paper elevation={0} sx={{ p: '20px' }}>
+      <div dangerouslySetInnerHTML={{ __html: safeDescription }} />
+    </Paper>
+  );
 }
 
 export default ProductDescription;
