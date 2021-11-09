@@ -1,6 +1,8 @@
 import { Container, Grid, LinearProgress, Paper } from '@mui/material';
 import { Box } from '@mui/system';
+import { addToCart } from 'features/Cart/cartSlice';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import AddToCartForm from '../components/AddToCartForm';
 import ProductAdditional from '../components/ProductAdditional';
@@ -11,8 +13,6 @@ import ProductMenu from '../components/ProductMenu';
 import ProductReviews from '../components/ProductReviews';
 import ProductThumbnail from '../components/ProductThumbnail';
 import useProductDetail from '../hooks/useProductDetail';
-import { useDispatch } from 'react-redux';
-import { addToCart } from 'features/Cart/cartSlice';
 
 DetailPage.propTypes = {};
 

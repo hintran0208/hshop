@@ -1,5 +1,8 @@
 import { Close } from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CodeIcon from '@mui/icons-material/Code';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Badge, Menu, MenuItem } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,16 +14,12 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import Login from 'features/Auth/Components/Login';
 import Register from 'features/Auth/Components/Register';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Badge, Menu, MenuItem } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import { logout } from 'features/Auth/userSlice';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { cartItemsCountSelector } from 'features/Cart/selectors';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { Link, NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   link: {
