@@ -1,5 +1,8 @@
 import { Close } from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CodeIcon from '@mui/icons-material/Code';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Badge, Menu, MenuItem } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,13 +14,13 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import Login from 'features/Auth/Components/Login';
 import Register from 'features/Auth/Components/Register';
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Menu, MenuItem } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import { logout } from 'features/Auth/userSlice';
+import { cartItemsCountSelector } from 'features/Cart/selectors';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { Link, NavLink } from 'react-router-dom';
+
 const useStyles = makeStyles((theme) => ({
   link: {
     color: '#fff',
@@ -33,12 +36,14 @@ const MODE = {
 export default function Header() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const loggedInUser = useSelector((state) => state.user.current);
+  const cartItemsCount = useSelector(cartItemsCountSelector);
   const isLoggedIn = !!loggedInUser.id;
 
   const handleClickOpen = () => {
@@ -62,6 +67,10 @@ export default function Header() {
     dispatch(action);
   };
 
+  const handleCartClick = () => {
+    history.push('/cart');
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -73,6 +82,10 @@ export default function Header() {
               King Shop
             </Link>
           </Typography>
+
+          <NavLink className={classes.link} to="/products">
+            <Button color="inherit">Products</Button>
+          </NavLink>
 
           <NavLink className={classes.link} to="/todos">
             <Button color="inherit">Todos</Button>
@@ -87,6 +100,17 @@ export default function Header() {
               Login
             </Button>
           )}
+
+          <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+            onClick={handleCartClick}
+          >
+            <Badge badgeContent={cartItemsCount} color="error">
+              <ShoppingCartIcon />
+            </Badge>
+          </IconButton>
 
           {isLoggedIn && (
             <IconButton color="inherit" onClick={handleUserClick}>
