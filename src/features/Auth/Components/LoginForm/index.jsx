@@ -3,13 +3,13 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Avatar, Button, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Box } from '@mui/system';
-import PasswordField from '../../../../components/form-controls/PasswordField';
-import InputField from '../../../../components/form-controls/InputField';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import LinearProgress from '@mui/material/LinearProgress';
+import InputField from 'components/form-controls/InputField';
+import PasswordField from 'components/form-controls/PasswordField';
 
 const theme = createTheme();
 
