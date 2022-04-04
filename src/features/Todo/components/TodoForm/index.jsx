@@ -1,6 +1,5 @@
-// import InputField from '../../../../components/form-controls/InputField';
 import { yupResolver } from '@hookform/resolvers/yup';
-import InputField from 'components/form-controls/InputField';
+import InputField from 'components/formcontrols/InputField';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';

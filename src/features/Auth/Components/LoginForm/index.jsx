@@ -8,8 +8,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import LinearProgress from '@mui/material/LinearProgress';
-import InputField from 'components/form-controls/InputField';
-import PasswordField from 'components/form-controls/PasswordField';
+import InputField from 'components/formcontrols/InputField';
+import PasswordField from 'components/formcontrols/PasswordField';
 
 const theme = createTheme();
 
