@@ -1,70 +1,137 @@
-# Getting Started with Create React App
+# HShop Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+- A simple project for learning ReactJS
+- Features:
+  - Register
+  - Login/Logout
+  - Product list
+  - Product detail
+  - Pagination
+  - Filter (price/category/service...)
+  - Add to cart
 
-In the project directory, you can run:
+## Technology
 
-### `npm start`
+- ReactJS
+- Redux-toolkit
+- React-hook-form
+- Yup
+- Axios
+- React-router-dom
+- MUI
+- ...
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Folder structure
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+src
+|__ components (shared components between features)
+|  |__ Loading
+|     |__ index.jsx
+|     |__ styles.scss
+|
+|__ features
+|  |__ Todo
+|     |__ components (components of feature Todo)
+|     |__ pages (pages of feature Todo)
+|     |__ index.jsx (entry point of feature Todo)
+|
+|__ App.js
+```
 
-### `npm test`
+FiltersViewer
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```js
+const filters = {
+  isPromotion: true,
+  salePrice_lte: 100,
+  salePrice_gte: 100,
+};
+```
 
-### `npm run build`
+FILTER_LIST
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- id: number
+- getLabel: (filters) => string
+- isActive: (filters) => true/false
+- isVisible: (filters) => true/false
+- isRemovable: boolean
+- onRemove: func
+- onToggle: func
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+DetailPage handleSubmit
+|__ AddToCartForm (form management)
+|  |__ QuantityField
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+/products/:productId --> ProductDescription
+/products/:productId/additional --> ProductAdditional
+/products/:productId/reviews --> ProductReviews
 
-### `npm run eject`
+DetailPage
+Click Chon Mua
+Open Mini Cart
+Go to Cart Page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Cart
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- showMiniCart: true / false
+- cartItems -> item (product, quantity)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+State tính toán phụ thuộc vào state có sẵn
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- cartItemsCount
+- cartTotal
+  --> createSelector()
 
-## Learn More
+## Authentication module
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Make an Appbar to insert registration and login links
+- Registration feature
+- Login feature
+- Show different header before and after login
+- Save user information to Redux for easy access in many different places
+- Automatically attach tokens to requests if logged in
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![authentication module image](./src/utils/image/authen-module.png)
 
-### Code Splitting
+## API login
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+POST /auth/local
+```
 
-### Analyzing the Bundle Size
+Sample payload
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```js
+const payload = {
+  identifier: 'abc@gmail.com', // can be either username or email
+  password: '123123',
+};
+```
 
-### Making a Progressive Web App
+Sample response
+![sample response image](./src/utils/image/register-response.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## API register
 
-### Advanced Configuration
+```
+POST /auth/local/register
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Sample payload
 
-### Deployment
+```js
+const payload = {
+  email: 'abc@gmail.com',
+  username: 'abc@gmail.com', // same as email
+  password: '123123', // min length 6
+  fullName: 'Hien Tran',
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Sample response
+![sample response image](./src/utils/image/register-response.png)
