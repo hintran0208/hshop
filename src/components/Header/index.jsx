@@ -1,6 +1,7 @@
 import { Close } from '@mui/icons-material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CodeIcon from '@mui/icons-material/Code';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Badge, Menu, MenuItem } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
@@ -75,11 +76,17 @@ export default function Header() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <CodeIcon size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} />
+          <StorefrontIcon
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 1 }}
+          />
 
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link className={classes.link} to="/">
-              King Shop
+              HShop
             </Link>
           </Typography>
 
