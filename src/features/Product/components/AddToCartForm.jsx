@@ -45,7 +45,7 @@ function AddToCartForm({ onSubmit = null }) {
         sx={{ mt: 1, mb: 2 }}
         size="large"
       >
-        Add to cart
+        Add to cart new
       </Button>
     </form>
   );
